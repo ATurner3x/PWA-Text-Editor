@@ -18,7 +18,7 @@ export const putDb = async (content) => {
   const db = await openDB('jate', 1);
   const tx = db.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  await store.put(content);
+  await store.put(note, note.id); 
   await tx.complete;
 };
 
@@ -28,9 +28,9 @@ export const getDb = async () => {
   const db = await openDB('jate', 1);
   const tx = db.transaction('jate', 'readonly');
   const store = tx.objectStore('jate');
-  const content = await store.getAll();
+  const notes = await store.getAll();
   await tx.complete;
-  return content;
+  return notes;
 };
 
 initdb();
