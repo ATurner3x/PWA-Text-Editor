@@ -4,13 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "",
-    "start": "",
-    "server": "",
-    "build": "",
-    "install": "",
-    "client": ""
+    "start:dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "build": "cross-env NODE_ENV=production webpack --config client/webpack.config.js --output-path=client/dist",
+    "install": "webpack --config webpack.config.js",
+    "client": "webpack serve --config client/webpack.config.js --open"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,6 +28,9 @@
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.4",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   }
 }

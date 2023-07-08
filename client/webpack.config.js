@@ -8,12 +8,14 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './client/src/js/index.js',
-      install: './client/src/js/install.js'
+      install: './client/src/js/install.js',
     },
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'client', 'dist'),
+      publicPath: '/',
     },
+    
     plugins: [
       new HtmlWebpackPlugin({
         template: './client/index.html',
@@ -39,10 +41,9 @@ module.exports = () => {
         ],
       }),
       new InjectManifest({
-        swSrc: './src-sw.js',
+        swSrc: './client/src-sw.js',
       }),
     ],
-
     module: {
       rules: [
         {
