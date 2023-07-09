@@ -6,8 +6,8 @@ module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js',
+      main: './client/src/js/index.js',
+      install: './client/src/js/install.js',
     },
     output: {
       filename: '[name].bundle.js',
@@ -17,12 +17,12 @@ module.exports = () => {
     
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './client/index.html',
         filename: 'index.html',
         chunks: ['main'],
       }),
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './client/index.html',
         filename: 'install.html',
         chunks: ['install'],
       }),
@@ -34,13 +34,13 @@ module.exports = () => {
         theme_color: '#000000',
         icons: [
           {
-            src: path.resolve('./src/images/logo.png'),
+            src: path.resolve('./client/src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './src-sw.js',
+        swSrc: './client/src-sw.js',
       }),
     ],
     module: {
